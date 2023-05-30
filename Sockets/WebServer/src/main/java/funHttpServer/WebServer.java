@@ -245,7 +245,29 @@ class WebServer {
           // TODO: Parse the JSON returned by your fetch and create an appropriate
           // response based on what the assignment document asks for
 
-        } else {
+        } else if(request.contains("pyramid?")){
+          Map<String, String> query_pairs = new LinkedHashMap<String, String>();
+          query_pairs = splitQuery(request.replace("pyramid?", ""));
+          if(query_pairs.get("char").length() == 1){
+            try{
+              String sym = query_pairs.get("char");
+              int row = Integer.parseInt(query_pairs.get("rows"));
+              
+           
+            } catch (NumberFormatException e){
+              builder.append("HTTP/1.2 200 OK\n");
+              builder.append("Content-Type: text/html; charset=utf-8\n");
+              builder.append("\n");
+              builder.append("Something went wrong with your row input. Please only enter a single char and the number of rows Intergers Example Https://jmcnabb2.duckdns.org/pyrmid?char=x&rows=9");
+             }
+
+          }
+         
+       
+      
+      
+      
+        }else {
           // if the request is not recognized at all
 
           builder.append("HTTP/1.1 400 Bad Request\n");

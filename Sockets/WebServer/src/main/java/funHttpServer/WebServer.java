@@ -218,7 +218,7 @@ class WebServer {
             builder.append("HTTP/1.2 200 OK\n");
             builder.append("Content-Type: text/html; charset=utf-8\n");
             builder.append("\n");
-            builder.append("Please enter Intergers only: Example Https://jmcnabb2.duckdns.org/multiply?num1=2&num2=3");
+            builder.append("Something went wrong with your imputs. Please only enter 2 Intergers Example Https://jmcnabb2.duckdns.org/multiply?num1=2&num2=3");
            }
        
           // TODO: Include error handling here with a correct error code and

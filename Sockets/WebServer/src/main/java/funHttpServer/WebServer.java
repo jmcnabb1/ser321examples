@@ -257,8 +257,8 @@ class WebServer {
               builder.append("\n");
               for(int i = 0; i < row ; i++){
                 for(int j = 1; j < row ; j++){
-                builder.append(sym);
-                builder.append(System.getProperty("line.separator"));
+                builder.append(sym).append(System.getProperty("line.separator");
+                
                 }
               }
             } catch (NumberFormatException e){

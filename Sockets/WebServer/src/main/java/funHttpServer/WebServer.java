@@ -274,11 +274,58 @@ class WebServer {
             builder.append("Something went wrong with your input. Please only enter a single char and the number of rows Intergers Example Https://jmcnabb2.duckdns.org/symbol?char=x&rows=100");
            }
          
-       
-      
-      
-      
-        }else {
+        } else if (request.contains("day?")) {
+            Map<String, String> query_pairs = new LinkedHashMap<String, String>();
+            query_pairs = splitQuery(request.replace("day?", ""));
+            if(Integer.parseInt(query_pairs.get("day")) >= 1 && Integer.parseInt(query_pairs.get("day")) <= 31
+                && Integer.parseInt(query_pairs.get("month")) >= 1 && Integer.parseInt(query_pairs.get("month")) <= 12
+                  && Integer.parseInt(query_pairs.get("year")) >= 1 && Integer.parseInt(query_pairs.get("year")) <= 2022){
+
+                  try{
+                    Integer day = Integer.parseInt(query_pairs.get("day"));
+                    Integer month = Integer.parseInt(query_pairs.get("month"));
+                    Integer year = Integer.parseInt(query_pairs.get("year"));
+
+                    if (month < 3) {
+                      month += 12;
+                      year--;
+                    }
+                 
+                  int h, q, m, j, k;
+                  q = day;
+                  m = month;
+                  j = year / 100;
+                  k = year % 100;
+        
+                  h = (q + 13*(m+1)/5 + k + k/4 + j/4 + 5*j) % 7;
+
+                  String[] daysOfWeek = { "Saturday", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday" };
+                  String dayOfWeek = daysOfWeek[h];
+
+                  builder.append("HTTP/1.2 200 OK\n");
+                  builder.append("Content-Type: text/html; charset=utf-8\n");
+                  builder.append("\n");
+                  builder.append("Result is: " + dayOfWeek);
+                } catch(NumberFormatException e){
+
+                  builder.append("HTTP/1.2 200 OK\n");
+                  builder.append("Content-Type: text/html; charset=utf-8\n");
+                  builder.append("\n");
+                  builder.append("Something went wrong with your input Please enter a day month and year  Example Https://jmcnabb2.duckdns.org/day?day=30%month=6&year=1991");
+                  }
+              } else {
+                
+                builder.append("HTTP/1.2 200 OK\n");
+                builder.append("Content-Type: text/html; charset=utf-8\n");
+                builder.append("\n");
+                builder.append("Something went wrong with your input Please enter a day month and year  Example Https://jmcnabb2.duckdns.org/day?day=30%month=6&year=1991");
+              }
+
+          
+          
+          
+          
+        } else {
           // if the request is not recognized at all
 
           builder.append("HTTP/1.1 400 Bad Request\n");

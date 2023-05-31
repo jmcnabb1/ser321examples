@@ -266,7 +266,7 @@ class WebServer {
             builder.append("HTTP/1.2 200 OK\n");
             builder.append("Content-Type: text/html; charset=utf-8\n");
             builder.append("\n");
-            builder.append("Something went wrong with your char input. Please only enter a single char and the number of rows Intergers Example Https://jmcnabb2.duckdns.org/pyramid?char=x&rows=9");
+            builder.append("Something went wrong with your input. Please only enter a single char and the number of rows Intergers Example Https://jmcnabb2.duckdns.org/pyramid?char=x&rows=9");
            }
          
        

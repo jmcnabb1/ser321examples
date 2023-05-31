@@ -255,7 +255,10 @@ class WebServer {
               builder.append("HTTP/1.2 200 OK\n");
               builder.append("Content-Type: text/html; charset=utf-8\n");
               builder.append("\n");
-              builder.append("Char = " + sym + " Rows = " + row);
+              for(int i = 0; i < row ; i++){
+                builder.append(sym + "\n");
+                
+              }
             } catch (NumberFormatException e){
               builder.append("HTTP/1.2 200 OK\n");
               builder.append("Content-Type: text/html; charset=utf-8\n");

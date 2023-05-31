@@ -256,9 +256,10 @@ class WebServer {
               builder.append("Content-Type: text/html; charset=utf-8\n");
               builder.append("\n");
               for(int i = 0; i < row ; i++){
+                for(int j = 1; j < row ; j++){
                 builder.append(sym);
                 builder.append(System.getProperty("line.separator"));
-                
+                }
               }
             } catch (NumberFormatException e){
               builder.append("HTTP/1.2 200 OK\n");

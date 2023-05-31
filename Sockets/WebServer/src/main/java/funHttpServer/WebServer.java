@@ -257,7 +257,7 @@ class WebServer {
               builder.append("\n");
               for(int i = 0; i < row ; i++){
                 
-                builder.append(sym);
+                builder.append(sym).append(System.getProperty("line.separator"));
                 
                
               }

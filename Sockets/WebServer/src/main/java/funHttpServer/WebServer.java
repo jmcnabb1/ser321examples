@@ -248,7 +248,7 @@ class WebServer {
         } else if(request.contains("pyramid?")){
           Map<String, String> query_pairs = new LinkedHashMap<String, String>();
           query_pairs = splitQuery(request.replace("pyramid?", ""));
-          if(query_pairs.get("char").length() == 1){
+          if(query_pairs.get("char").length() == 1 && Integer.parseInt(query_pairs.get("rows")) > 0){
             try{
               String sym = query_pairs.get("char");
               int row = Integer.parseInt(query_pairs.get("rows"));

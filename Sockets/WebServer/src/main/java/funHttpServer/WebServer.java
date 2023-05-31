@@ -245,10 +245,10 @@ class WebServer {
           // TODO: Parse the JSON returned by your fetch and create an appropriate
           // response based on what the assignment document asks for
 
-        } else if(request.contains("pyramid?")){
+        } else if(request.contains("symbol?")){
           Map<String, String> query_pairs = new LinkedHashMap<String, String>();
-          query_pairs = splitQuery(request.replace("pyramid?", ""));
-          if(query_pairs.get("char").length() == 1 && Integer.parseInt(query_pairs.get("rows")) > 0){
+          query_pairs = splitQuery(request.replace("symbol?", ""));
+          if(query_pairs.get("char").length() == 1 && Integer.parseInt(query_pairs.get("rows")) < 9000 && Integer.parseInt(query_pairs.get("rows")) > 0){
             try{
               String sym = query_pairs.get("char");
               int row = Integer.parseInt(query_pairs.get("rows"));
@@ -256,22 +256,22 @@ class WebServer {
               builder.append("Content-Type: text/html; charset=utf-8\n");
               builder.append("\n");
               for(int i = 0; i < row ; i++){
-                for(int j = 1; j < row ; j++){
-                builder.append(sym).append(System.getProperty("line.separator"));
                 
-                }
+                builder.append(sym);
+                
+               
               }
             } catch (NumberFormatException e){
               builder.append("HTTP/1.2 200 OK\n");
               builder.append("Content-Type: text/html; charset=utf-8\n");
               builder.append("\n");
-              builder.append("Something went wrong with your row input. Please only enter a single char and the number of rows Intergers Example Https://jmcnabb2.duckdns.org/pyramid?char=x&rows=9");
+              builder.append("Something went wrong with your row input. Please only enter a single char and the number of rows Intergers Example Https://jmcnabb2.duckdns.org/symbol?char=x&rows=100");
             }
             } else {
             builder.append("HTTP/1.2 200 OK\n");
             builder.append("Content-Type: text/html; charset=utf-8\n");
             builder.append("\n");
-            builder.append("Something went wrong with your input. Please only enter a single char and the number of rows Intergers Example Https://jmcnabb2.duckdns.org/pyramid?char=x&rows=9");
+            builder.append("Something went wrong with your input. Please only enter a single char and the number of rows Intergers Example Https://jmcnabb2.duckdns.org/symbol?char=x&rows=100");
            }
          
        

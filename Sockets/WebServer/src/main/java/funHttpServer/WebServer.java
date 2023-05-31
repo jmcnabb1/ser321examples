@@ -252,16 +252,10 @@ class WebServer {
             try{
               String sym = query_pairs.get("char");
               int row = Integer.parseInt(query_pairs.get("rows"));
-              String[][][] pyramid = new String[row][][];
-                 
-              for (int i = 0; i < row; i++) {
-                for(int j = 0; j < row - i ; j++ ){
-                  for (int k = 0; k < 2* i + 1 ; k++) {
-                      pyramid[i][j][k] = sym;
-                  }
-                }
-              
-            }
+              builder.append("HTTP/1.2 200 OK\n");
+              builder.append("Content-Type: text/html; charset=utf-8\n");
+              builder.append("\n");
+              builder.append("Char = " + sym + " Rows = " + row);
             } catch (NumberFormatException e){
               builder.append("HTTP/1.2 200 OK\n");
               builder.append("Content-Type: text/html; charset=utf-8\n");

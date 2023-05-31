@@ -256,7 +256,8 @@ class WebServer {
               builder.append("Content-Type: text/html; charset=utf-8\n");
               builder.append("\n");
               for(int i = 0; i < row ; i++){
-                builder.append(sym + "\n");
+                builder.append(sym);
+                builder.append("\n");
                 
               }
             } catch (NumberFormatException e){
